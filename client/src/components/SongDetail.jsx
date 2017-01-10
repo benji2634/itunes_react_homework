@@ -5,8 +5,10 @@ var SongDetail = function (props) {
     return <h4>No song selected</h4>
   }
   return (
-    <div>
-      <h4>{props.song['im:name'].label}</h4>
+    <div className="song-detail">
+      <h5>Chart position: </h5>
+      <h4>Title: {props.song['im:name'].label}</h4>
+      <h4>Artist: {props.song['im:artist'].label}</h4>
     </div>
   );
 };

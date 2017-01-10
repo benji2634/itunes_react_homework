@@ -2,12 +2,11 @@ var React = require('react');
 var SongSelector = require('../components/SongSelector.jsx');
 var SongDetail = require('../components/SongDetail');
 
-
 var ItunesContainer = React.createClass({
   getInitialState: function(){
     return {
       songs: [],
-      setTopSong: null
+      chosenSong: null
     };
   },
 
@@ -19,10 +18,10 @@ var ItunesContainer = React.createClass({
       var data = JSON.parse(request.responseText)['feed']['entry'];
       this.setState({
         songs: data,
-        setTopSong: data[0]
+        chosenSong: data[0]
       });
     }.bind(this);
-    request.send(null);
+    request.send();
   },
 
   render: function () {
@@ -31,15 +30,15 @@ var ItunesContainer = React.createClass({
         <h3>iTunes Top 20</h3>
         <SongSelector 
         songs={this.state.songs}
-        selectSong={this.setTopSong}
+        selectSong={this.setChosenSong}
         />
-        <SongDetail song={this.setState.topSong}/>
+        <SongDetail song={this.state.chosenSong}/>
       </div>
     );
   },
 
-  setTopSong: function (song) {
-    this.setState({topSong: song})
+  setChosenSong: function (song) {
+    this.setState({chosenSong: song})
   }
 
 });
