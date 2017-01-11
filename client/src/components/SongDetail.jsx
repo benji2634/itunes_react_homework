@@ -9,6 +9,7 @@ var SongDetail = function (props) {
       <h5>Chart position: </h5>
       <h4>Title: {props.song['im:name'].label}</h4>
       <h4>Artist: {props.song['im:artist'].label}</h4>
+      <img src={props.song['im:image'][2].label}></img>
     </div>
   );
 };
