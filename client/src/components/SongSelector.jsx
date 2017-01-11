@@ -6,7 +6,7 @@ var SongSelector = React.createClass({
   },
   render: function () {
     var options = this.props.songs.map(function (song, index) {
-      return (<option value={index} key={index}>{song['im:name'].label}</option>);
+      return (<option value={index} key={index}>{index + 1} {song['im:name'].label}</option>);
     });
     return (
       <select id="songs" value={this.state.selectedIndex} onChange={this.handleChange}>
@@ -18,6 +18,7 @@ var SongSelector = React.createClass({
     var newIndex = parseInt(event.target.value);
     this.setState({selectedIndex: newIndex});
     var song = this.props.songs[newIndex];
+    song.position = newIndex + 1;
     this.props.selectSong(song);
   }
 });
